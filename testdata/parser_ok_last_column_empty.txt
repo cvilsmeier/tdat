@@ -1,0 +1,12 @@
+
+persons
+|id:i
+|
+
+
+---EOF---
+
+table "persons"
+  col "id"(i)
+row 1
+  val null(i)

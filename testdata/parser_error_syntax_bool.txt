@@ -1,0 +1,8 @@
+
+persons
+|id:b
+|balla
+
+---EOF---
+
+line 4, pos 2: cannot parse as bool: strconv.ParseBool: parsing "balla": invalid syntax

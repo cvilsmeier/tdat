@@ -1,0 +1,8 @@
+
+persons
+|column
+
+
+---EOF---
+
+line 3, pos 2: invalid column definition

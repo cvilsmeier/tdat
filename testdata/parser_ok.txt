@@ -1,0 +1,42 @@
+
+persons
+|id:i   |name:s     |male:b   |birth:t
+|1      |"joe"      |true       |2017-12-12T10:00:00.333
+|2      |"joe|doe"  |false      |0001-01-01T00:00:00.000
+|3      |"你好世界" | |
+|       | | |
+|4      | | |
+
+---EOF---
+
+table "persons"
+  col "id"(i)
+  col "name"(s)
+  col "male"(b)
+  col "birth"(t)
+row 1
+  val 1(i)
+  val joe(s)
+  val true(b)
+  val 2017-12-12 10:00:00.333 +0000 UTC(t)
+row 2
+  val 2(i)
+  val joe|doe(s)
+  val false(b)
+  val 0001-01-01 00:00:00 +0000 UTC(t)
+row 3
+  val 3(i)
+  val 你好世界(s)
+  val null(b)
+  val null(t)
+row 4
+  val null(i)
+  val null(s)
+  val null(b)
+  val null(t)
+row 5
+  val 4(i)
+  val null(s)
+  val null(b)
+  val null(t)
+

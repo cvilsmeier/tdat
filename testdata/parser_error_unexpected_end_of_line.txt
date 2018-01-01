@@ -1,0 +1,8 @@
+
+persons
+|
+
+
+---EOF---
+
+line 3, pos 2: unexpected end of line

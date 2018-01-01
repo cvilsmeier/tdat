@@ -1,0 +1,8 @@
+
+persons
+|id:f
+|balla
+
+---EOF---
+
+line 4, pos 2: cannot parse as float: strconv.ParseFloat: parsing "balla": invalid syntax

@@ -1,0 +1,8 @@
+
+persons
+|id:i
+|balla
+
+---EOF---
+
+line 4, pos 2: cannot parse as int: strconv.ParseInt: parsing "balla": invalid syntax

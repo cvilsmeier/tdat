@@ -1,0 +1,8 @@
+
+persons
+|id:i   |name:s
+|1  |"joe"   |true
+
+---EOF---
+
+line 4, pos 14: too many data values

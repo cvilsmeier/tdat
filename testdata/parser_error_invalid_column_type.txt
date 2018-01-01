@@ -1,0 +1,8 @@
+
+persons
+|id:x
+
+
+---EOF---
+
+line 3, pos 2: invalid column type

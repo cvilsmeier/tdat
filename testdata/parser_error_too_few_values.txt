@@ -1,0 +1,8 @@
+
+persons
+|id:i   |name:s
+|1  
+
+---EOF---
+
+line 4, pos 5: too few data values

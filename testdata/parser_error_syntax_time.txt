@@ -1,0 +1,8 @@
+
+persons
+|id:t
+|balla
+
+---EOF---
+
+line 4, pos 2: cannot parse as time: parsing time "balla" as "2006-01-02T15:04:05.999": cannot parse "balla" as "2006"
