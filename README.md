@@ -2,6 +2,11 @@
 The Tabular Data (TDAT) Data Interchange Format
 =============================================================================
 
+[![GoDoc](https://godoc.org/github.com/cvilsmeier/tdat?status.svg)](https://godoc.org/github.com/cvilsmeier/tdat)
+[![Build Status](https://travis-ci.org/cvilsmeier/tdat.svg?branch=master)](https://travis-ci.org/cvilsmeier/tdat)
+[![Go Report Card](https://goreportcard.com/badge/github.com/cvilsmeier/tdat)](https://goreportcard.com/report/github.com/cvilsmeier/tdat)
+
+
 TDAT is a data interchange format for tabular data. It is derived from CSV
 (Comma Separated Values). Its main characteristics are:
 
