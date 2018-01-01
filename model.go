@@ -36,21 +36,21 @@ type Row struct {
 type ValueType byte
 
 const (
-	
+
 	// IntValue represents a int64 value. Its code is 'i'.
-	IntValue    ValueType = 'i'
+	IntValue ValueType = 'i'
 
 	// FloatValue represents a float64 value. Its code is 'f'.
-	FloatValue            = 'f'
+	FloatValue = 'f'
 
 	// BoolValue represents a bool value. Its code is 'b'.
-	BoolValue             = 'b'
+	BoolValue = 'b'
 
 	// StringValue represents a string value. Its code is 's'.
-	StringValue           = 's'
+	StringValue = 's'
 
 	// TimeValue represents a time.Time value. Its code is 't'.
-	TimeValue             = 't'
+	TimeValue = 't'
 )
 
 // IsValid returns true if t is a valid ValueType.
