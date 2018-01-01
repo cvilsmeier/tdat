@@ -18,7 +18,7 @@ func True(t *testing.T, cond bool) {
 	Truef(t, cond, "")
 }
 
-// True asserts a condition with a formatted message.
+// Truef asserts a condition, with a formatted message.
 func Truef(t *testing.T, cond bool, format string, args ...interface{}) {
 	t.Helper()
 	if !cond {
@@ -37,7 +37,7 @@ func EqStr(t *testing.T, exp, act string) {
 	EqStrf(t, exp, act, "")
 }
 
-// EqStr asserts that a string equals another, with a formattd message.
+// EqStrf asserts that a string equals another, with a formattd message.
 func EqStrf(t *testing.T, exp, act string, format string, args ...interface{}) {
 	t.Helper()
 	if exp != act {
@@ -56,7 +56,7 @@ func EqInt(t *testing.T, exp, act int) {
 	EqIntf(t, exp, act, "")
 }
 
-// EqInt asserts that two ints are equal, with a formattd message.
+// EqIntf asserts that two ints are equal, with a formattd message.
 func EqIntf(t *testing.T, exp, act int, format string, args ...interface{}) {
 	t.Helper()
 	if exp != act {
