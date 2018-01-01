@@ -33,35 +33,7 @@ func TestParse(t *testing.T) {
 			act := ""
 			if model != nil {
 				for _, table := range model.Tables {
-					act += fmt.Sprintf("table %q\n", table.Name)
-					for _, col := range table.Columns {
-						act += fmt.Sprintf("  col %q(%c)\n", col.Name, col.Type)
-					}
-					for rowIndex, row := range table.Rows {
-						act += fmt.Sprintf("row %d\n", rowIndex+1)
-						for _, val := range row.Values {
-							if val.Null {
-								act += fmt.Sprintf("  val null(%c)\n", val.Type)
-							} else {
-								valText := ""
-								switch val.Type {
-								case IntValue:
-									valText = fmt.Sprintf("%d", val.AsInt)
-								case FloatValue:
-									valText = fmt.Sprintf("%f", val.AsFloat)
-								case BoolValue:
-									valText = fmt.Sprintf("%t", val.AsBool)
-								case StringValue:
-									valText = fmt.Sprintf("%s", val.AsString)
-								case TimeValue:
-									valText = fmt.Sprintf("%s", val.AsTime)
-								default:
-									panic("wrong type")
-								}
-								act += fmt.Sprintf("  val %s(%c)\n", valText, val.Type)
-							}
-						}
-					}
+					act += stringifyTable(table)
 				}
 			}
 			if err != nil {
@@ -71,6 +43,39 @@ func TestParse(t *testing.T) {
 			assert.EqStr(t, exp, act)
 		})
 	}
+}
+
+func stringifyTable(table *Table) string {
+	str := fmt.Sprintf("table %q\n", table.Name)
+	for _, col := range table.Columns {
+		str += fmt.Sprintf("  col %q(%c)\n", col.Name, col.Type)
+	}
+	for rowIndex, row := range table.Rows {
+		str += fmt.Sprintf("row %d\n", rowIndex+1)
+		for _, val := range row.Values {
+			if val.Null {
+				str += fmt.Sprintf("  val null(%c)\n", val.Type)
+			} else {
+				valText := ""
+				switch val.Type {
+				case IntValue:
+					valText = fmt.Sprintf("%d", val.AsInt)
+				case FloatValue:
+					valText = fmt.Sprintf("%f", val.AsFloat)
+				case BoolValue:
+					valText = fmt.Sprintf("%t", val.AsBool)
+				case StringValue:
+					valText = fmt.Sprintf("%s", val.AsString)
+				case TimeValue:
+					valText = fmt.Sprintf("%s", val.AsTime)
+				default:
+					panic("wrong type")
+				}
+				str += fmt.Sprintf("  val %s(%c)\n", valText, val.Type)
+			}
+		}
+	}
+	return str
 }
 
 func BenchmarkAllocateModel(b *testing.B) {

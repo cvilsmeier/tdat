@@ -75,48 +75,11 @@ func convertToCSV(r io.Reader, w io.Writer) error {
 				return err
 			}
 		}
-		if len(table.Columns) > 0 {
-			// write columns
-			{
-				record := []string{}
-				for _, column := range table.Columns {
-					record = append(record, column.Name)
-				}
-				err := csvWriter.Write(record)
-				if err != nil {
-					return err
-				}
-			}
-			// write rows
-			{
-				for _, row := range table.Rows {
-					record := []string{}
-					for columnIndex := range table.Columns {
-						value := row.Values[columnIndex]
-						cell := ""
-						if !value.Null {
-							switch value.Type {
-							case tdat.IntValue:
-								cell = fmt.Sprintf("%d", value.AsInt)
-							case tdat.FloatValue:
-								cell = fmt.Sprintf("%f", value.AsFloat)
-							case tdat.BoolValue:
-								cell = fmt.Sprintf("%t", value.AsBool)
-							case tdat.StringValue:
-								cell = value.AsString
-							case tdat.TimeValue:
-								cell = value.AsTime.Format("2006-01-02 15:04:05")
-							default:
-								panic("invalid value type")
-							}
-						}
-						record = append(record, cell)
-					}
-					err := csvWriter.Write(record)
-					if err != nil {
-						return err
-					}
-				}
+		// write columns and rows
+		{
+			err := convertTableToCSV(table, csvWriter)
+			if err != nil {
+				return err
 			}
 		}
 		// write empty line
@@ -128,5 +91,54 @@ func convertToCSV(r io.Reader, w io.Writer) error {
 		}
 	}
 	csvWriter.Flush()
+	return nil
+}
+
+func convertTableToCSV(table *tdat.Table, csvWriter *csv.Writer) error {
+	if len(table.Columns) == 0 {
+		return nil
+	}
+	// write columns
+	{
+		record := []string{}
+		for _, column := range table.Columns {
+			record = append(record, column.Name)
+		}
+		err := csvWriter.Write(record)
+		if err != nil {
+			return err
+		}
+	}
+	// write rows
+	{
+		for _, row := range table.Rows {
+			record := []string{}
+			for columnIndex := range table.Columns {
+				value := row.Values[columnIndex]
+				cell := ""
+				if !value.Null {
+					switch value.Type {
+					case tdat.IntValue:
+						cell = fmt.Sprintf("%d", value.AsInt)
+					case tdat.FloatValue:
+						cell = fmt.Sprintf("%f", value.AsFloat)
+					case tdat.BoolValue:
+						cell = fmt.Sprintf("%t", value.AsBool)
+					case tdat.StringValue:
+						cell = value.AsString
+					case tdat.TimeValue:
+						cell = value.AsTime.Format("2006-01-02 15:04:05")
+					default:
+						panic("invalid value type")
+					}
+				}
+				record = append(record, cell)
+			}
+			err := csvWriter.Write(record)
+			if err != nil {
+				return err
+			}
+		}
+	}
 	return nil
 }
