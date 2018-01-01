@@ -12,32 +12,32 @@ func TestRenderToString(t *testing.T) {
 	locBerlin, _ := time.LoadLocation("Europe/Berlin")
 	model := &Model{
 		[]*Table{
-			&Table{
+			{
 				"persons",
 				[]*Column{
-					&Column{"id", IntValue},
-					&Column{"size", FloatValue},
-					&Column{"flag", BoolValue},
-					&Column{"name", StringValue},
-					&Column{"birth", TimeValue},
+					{"id", IntValue},
+					{"size", FloatValue},
+					{"flag", BoolValue},
+					{"name", StringValue},
+					{"birth", TimeValue},
 				},
 				[]*Row{
-					&Row{
+					{
 						[]*Value{
-							&Value{Type: IntValue, AsInt: int64(1)},
-							&Value{Type: FloatValue, AsFloat: float64(1.83)},
-							&Value{Type: BoolValue, AsBool: true},
-							&Value{Type: StringValue, AsString: "Joe \u2602 Smith"},
-							&Value{Type: TimeValue, AsTime: time.Date(2001, 1, 2, 10, 11, 12, 13000000, locBerlin)},
+							{Type: IntValue, AsInt: int64(1)},
+							{Type: FloatValue, AsFloat: float64(1.83)},
+							{Type: BoolValue, AsBool: true},
+							{Type: StringValue, AsString: "Joe \u2602 Smith"},
+							{Type: TimeValue, AsTime: time.Date(2001, 1, 2, 10, 11, 12, 13000000, locBerlin)},
 						},
 					},
-					&Row{
+					{
 						[]*Value{
-							&Value{Type: IntValue, Null: true},
-							&Value{Type: FloatValue, Null: true},
-							&Value{Type: BoolValue, Null: true},
-							&Value{Type: StringValue, Null: true},
-							&Value{Type: TimeValue, Null: true},
+							{Type: IntValue, Null: true},
+							{Type: FloatValue, Null: true},
+							{Type: BoolValue, Null: true},
+							{Type: StringValue, Null: true},
+							{Type: TimeValue, Null: true},
 						},
 					},
 				},
@@ -72,23 +72,23 @@ func BenchmarkRenderTdat(b *testing.B) {
 	for i := 0; i < rowCount; i++ {
 		row := &Row{
 			[]*Value{
-				&Value{Type: IntValue, AsInt: int64(1)},
-				&Value{Type: FloatValue, AsFloat: float64(13000.12)},
-				&Value{Type: BoolValue, AsBool: true},
-				&Value{Type: StringValue, AsString: "joe"},
+				{Type: IntValue, AsInt: int64(1)},
+				{Type: FloatValue, AsFloat: float64(13000.12)},
+				{Type: BoolValue, AsBool: true},
+				{Type: StringValue, AsString: "joe"},
 			},
 		}
 		rows = append(rows, row)
 	}
 	model := &Model{
 		[]*Table{
-			&Table{
+			{
 				"persons",
 				[]*Column{
-					&Column{"id", IntValue},
-					&Column{"rate", FloatValue},
-					&Column{"flag", BoolValue},
-					&Column{"name", StringValue},
+					{"id", IntValue},
+					{"rate", FloatValue},
+					{"flag", BoolValue},
+					{"name", StringValue},
 				},
 				rows,
 			},

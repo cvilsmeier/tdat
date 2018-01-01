@@ -8,13 +8,13 @@ import (
 func TestValidateModelNoValues(t *testing.T) {
 	model := &Model{
 		[]*Table{
-			&Table{
+			{
 				"products",
 				[]*Column{
-					&Column{"id", IntValue},
+					{"id", IntValue},
 				},
 				[]*Row{
-					&Row{},
+					{},
 				},
 			},
 		},
@@ -27,18 +27,18 @@ func TestValidateModelNoValues(t *testing.T) {
 func TestValidateTooManyValues(t *testing.T) {
 	model := &Model{
 		[]*Table{
-			&Table{
+			{
 				"products",
 				[]*Column{
-					&Column{"id", IntValue},
-					&Column{"name", StringValue},
+					{"id", IntValue},
+					{"name", StringValue},
 				},
 				[]*Row{
-					&Row{
+					{
 						[]*Value{
-							&Value{Type: IntValue},
-							&Value{Type: StringValue},
-							&Value{Type: BoolValue},
+							{Type: IntValue},
+							{Type: StringValue},
+							{Type: BoolValue},
 						},
 					},
 				},
@@ -53,17 +53,17 @@ func TestValidateTooManyValues(t *testing.T) {
 func TestValidateWrongValueType(t *testing.T) {
 	model := &Model{
 		[]*Table{
-			&Table{
+			{
 				"products",
 				[]*Column{
-					&Column{"id", IntValue},
-					&Column{"name", StringValue},
+					{"id", IntValue},
+					{"name", StringValue},
 				},
 				[]*Row{
-					&Row{
+					{
 						[]*Value{
-							&Value{Type: IntValue},
-							&Value{Type: BoolValue},
+							{Type: IntValue},
+							{Type: BoolValue},
 						},
 					},
 				},
@@ -78,17 +78,17 @@ func TestValidateWrongValueType(t *testing.T) {
 func TestValidateOk(t *testing.T) {
 	model := &Model{
 		[]*Table{
-			&Table{
+			{
 				"products",
 				[]*Column{
-					&Column{"id", IntValue},
-					&Column{"name", StringValue},
+					{"id", IntValue},
+					{"name", StringValue},
 				},
 				[]*Row{
-					&Row{
+					{
 						[]*Value{
-							&Value{Type: IntValue},
-							&Value{Type: StringValue},
+							{Type: IntValue},
+							{Type: StringValue},
 						},
 					},
 				},
