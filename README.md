@@ -29,10 +29,20 @@ For a full specification of TDAT, see rfc.txt included in this repository.
 What is included
 -----------------------------------------------------------------------------
 
-This repository is the refernce implementation for TDAT. It provides a parser
-and a renderer (generator) for TDAT models. Additionally, it provides the tdat
-tool. The tdat tool can be used to validate TDAT models and to convert TDAT
-models into JSON and CSV.
+This repository is the reference implementation for TDAT. It provides
+
+* A specification (see rcf.txt)
+* A parser and a renderer (generator) for TDAT models
+* The tdat tool for validating TDAT files and converting them into various other formats (JSON, CSV)
+
+
+Use it
+-----------------------------------------------------------------------------
+
+Get it with
+
+    go get github.com/cvilsmeier/tdat
+
 
 
 Performance
