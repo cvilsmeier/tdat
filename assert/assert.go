@@ -12,11 +12,13 @@ import (
 	"testing"
 )
 
+// True asserts a condition.
 func True(t *testing.T, cond bool) {
 	t.Helper()
 	Truef(t, cond, "")
 }
 
+// True asserts a condition with a formatted message.
 func Truef(t *testing.T, cond bool, format string, args ...interface{}) {
 	t.Helper()
 	if !cond {
@@ -29,11 +31,13 @@ func Truef(t *testing.T, cond bool, format string, args ...interface{}) {
 	}
 }
 
+// EqStr asserts that a string equals another.
 func EqStr(t *testing.T, exp, act string) {
 	t.Helper()
 	EqStrf(t, exp, act, "")
 }
 
+// EqStr asserts that a string equals another, with a formattd message.
 func EqStrf(t *testing.T, exp, act string, format string, args ...interface{}) {
 	t.Helper()
 	if exp != act {
@@ -46,11 +50,13 @@ func EqStrf(t *testing.T, exp, act string, format string, args ...interface{}) {
 	}
 }
 
+// EqInt asserts that two ints are equal.
 func EqInt(t *testing.T, exp, act int) {
 	t.Helper()
 	EqIntf(t, exp, act, "")
 }
 
+// EqInt asserts that two ints are equal, with a formattd message.
 func EqIntf(t *testing.T, exp, act int, format string, args ...interface{}) {
 	t.Helper()
 	if exp != act {

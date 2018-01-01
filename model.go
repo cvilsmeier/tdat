@@ -32,16 +32,28 @@ type Row struct {
 	Values []*Value
 }
 
+// ValueType represents the type of a column or value.
 type ValueType byte
 
 const (
+	
+	// IntValue represents a int64 value. Its code is 'i'.
 	IntValue    ValueType = 'i'
+
+	// FloatValue represents a float64 value. Its code is 'f'.
 	FloatValue            = 'f'
+
+	// BoolValue represents a bool value. Its code is 'b'.
 	BoolValue             = 'b'
+
+	// StringValue represents a string value. Its code is 's'.
 	StringValue           = 's'
+
+	// TimeValue represents a time.Time value. Its code is 't'.
 	TimeValue             = 't'
 )
 
+// IsValid returns true if t is a valid ValueType.
 func (t ValueType) IsValid() bool {
 	switch t {
 	case 'i', 'f', 'b', 's', 't':
